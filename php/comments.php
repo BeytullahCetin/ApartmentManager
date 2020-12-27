@@ -1,24 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comments</title>
-    <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/styles.css?v=<?php echo time(); ?>">
 
 </head>
 <body>
 
-<?php include 'dbconn.php'; ?>
+    <?php 
     
-    <header>
-        <a class="logo" href="index.php">
-            <h1>Apartment Manager</h1>
-        </a>
-    </header>
-
-    <?php include 'navbar.php';
+    include 'dbconn.php';
+    include 'navbar.php';
 
 $query = "SELECT * FROM comment";
 $result = mysqli_query($conn, $query);

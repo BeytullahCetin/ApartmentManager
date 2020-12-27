@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +9,6 @@
 </head>
 
 <body>
-
-    <header>
-        <a class="logo" href="index.php">
-            <h1>Apartment Manager</h1>
-        </a>
-    </header>
 
     <?php
     include 'navbar.php';

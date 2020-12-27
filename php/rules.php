@@ -5,19 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apartment Manager</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css?v=<?php echo time(); ?>">
 
 </head>
 
 <body>
 
-    <header>
-        <a class="logo" href="index.php">
-            <h1>Apartment Manager</h1>
-        </a>
-    </header>
-
     <?php 
+    include 'dbconn.php';
     include 'navbar.php';
     ?>
 
