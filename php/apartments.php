@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="http://localhost:80/css/styles.css?v=<?php echo time(); ?>">
 
 </head>
 
@@ -46,7 +46,7 @@
             while ($user = mysqli_fetch_assoc($result)) {
             ?>
                 <tr>
-                    <td> <a href="php/userdelete.php?id=<?php echo $user["userID"] ?>"><button>Delete</button></a></td>
+                    <td> <a class="buttona" href="php/userdelete.php?id=<?php echo $user["userID"] ?>"><button class="button1">Delete</button></a></td>
                     <td> <?php echo $user["userID"]; ?> </td>
                     <td> <?php echo $user["userName"]; ?> </td>
                     <td> <?php echo $user["userNum"]; ?> </td>

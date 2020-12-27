@@ -102,21 +102,29 @@ input{
   
 }
 
-input[type="tel"]:hover{
-  border: 3px solid var(--login-background2);
-  
-}
 
-input[type="password"]:hover{
+
+input:hover{
   border: 3px solid var(--login-background2);
 }
 
 input[type=radio]{
-  margin: 0px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding: 0px;
 }
 
-input[type=submit]{
+.buttona{
+  text-decoration: none;
+}
+
+
+.button1{
+  padding: .15rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  background-color: white;
+  border: 3px solid var(--login-background);
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -125,10 +133,9 @@ input[type=submit]{
   box-shadow: 3px 3px rgba(0,0, 0, .5);
 }
 
-input[type=submit]:hover{
+.button1:hover{
   cursor: pointer;
   color: white;
-  font-size: 1.1rem;
   background-color: var(--login-background);
   box-shadow: 2px 2px rgba(0,0, 0, .4);
 }
@@ -138,27 +145,18 @@ img {
     height: auto;
   }
 
-div.flow{
+.flow{
   text-align: center;
-  width: 60%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
-}
-
-table.flow {
-    
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    overflow-x: auto;
-
+  background-color: rgba(255,255, 255, 0.75);
 }
 
 table, th, td, tr{
   padding: 10px;
   border-collapse: collapse;
-  background-color: rgba(255, 255, 255, 0.25);
+  
 }
 
 th, td{

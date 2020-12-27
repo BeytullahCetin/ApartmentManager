@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apartment Manager</title>
-    <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="http://localhost:80/css/styles.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
 
     <?php
-    include 'navbar.php';
-    ?>
-
-    <?php
+    
     include 'dbconn.php';
+    include 'navbar.php';
+    
     ?>
 
     <div class="center-container">
@@ -27,7 +26,7 @@
                 <br>
                 <input type="password" name="pwd" id="pwd" required maxlength="11" placeholder="Password">
                 <br>
-                <input type="submit" value="Login">
+                <input class="button1" type="submit" value="Login">
 
             </form>
         </div>

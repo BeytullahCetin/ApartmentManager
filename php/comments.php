@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comments</title>
-    <link rel="stylesheet" href="../css/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="http://localhost:80/css/styles.css?v=<?php echo time(); ?>">
 
 </head>
 <body>
@@ -19,7 +19,7 @@ $result = mysqli_query($conn, $query);
 
 ?>
 
-<div class="user-table">
+<div>
     <table class="flow">
         <tr>
             
@@ -35,7 +35,7 @@ $result = mysqli_query($conn, $query);
         while ($comment = mysqli_fetch_assoc($result)) {
         ?>
             <tr>
-                <td> <a href="userdelete.php?id=<?php echo $user["commentID"] ?>"><button>Delete</button></a></td>
+                <td> <a class="buttona" href="commentdelete.php?id=<?php echo $comment["commentID"] ?>"><button class="button1">Delete</button></a></td>
                 <td> <?php echo $comment["commentText"]; ?> </td>
                 
 

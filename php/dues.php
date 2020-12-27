@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../css/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="http://localhost:80/css/styles.css?v=<?php echo time(); ?>">
 
 </head>
 
@@ -50,7 +49,7 @@
                     50$
                 </td>
                 <td>
-                    <Button class="mybut" onclick=pay()>Pay</Button>
+                    <Button class="button1" onclick=pay()>Pay</Button>
                 </td>
             </tr>
             <tr>
@@ -67,7 +66,7 @@
                     50$
                 </td>
                 <td>
-                    <Button class="mybut">Pay</Button>
+                    <Button class="button1">Pay</Button>
                 </td>
             </tr>
             <tr>
@@ -84,7 +83,7 @@
                     50$
                 </td>
                 <td>
-                    <Button class="mybut">Pay</Button>
+                    <Button class="button1">Pay</Button>
                 </td>
             </tr>
             <tr>
@@ -101,7 +100,7 @@
                     50$
                 </td>
                 <td>
-                    <Button class="mybut">Pay</Button>
+                    <Button class="button1">Pay</Button>
                 </td>
             </tr>
         </table>
