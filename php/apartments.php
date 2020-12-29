@@ -13,6 +13,9 @@
     <?php include 'dbconn.php';
     include 'navbar.php'; 
 
+    if(isset($_GET['succesfullyupdated']))
+        echo "Succesfully Updated";
+
     $query = "SELECT * FROM users";
     $result = mysqli_query($conn, $query);
 
@@ -21,6 +24,7 @@
     <div class="user-table">
         <table class="flow">
             <tr>
+                <th></th>
                 <th></th>
                 <th>
                     No
@@ -46,7 +50,8 @@
             while ($user = mysqli_fetch_assoc($result)) {
             ?>
                 <tr>
-                    <td> <a class="buttona" href="php/userdelete.php?id=<?php echo $user["userID"] ?>"><button class="button1">Delete</button></a></td>
+                <td> <a class="buttona" href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button class="button1">Update</button></a></td>
+                    <td> <a class="buttona" href="userdelete.php?id=<?php echo $user["userID"] ?>"><button class="button1">Delete</button></a></td>
                     <td> <?php echo $user["userID"]; ?> </td>
                     <td> <?php echo $user["userName"]; ?> </td>
                     <td> <?php echo $user["userNum"]; ?> </td>
@@ -56,8 +61,7 @@
                     <td> <?php echo $user["doorNo"]; ?> </td>
                     <td> <?php echo $user["entryDate"]; ?> </td>
                     <td> <?php echo $user["exitDate"]; ?> </td>
-                    <td> <?php if($user["status"]== "owner") echo "OWNER";
-                    else if($user["status"]=="tenant") echo "TENANT"; ?> </td>
+                    <td> <?php echo strtoupper($user["status"]);?> </td>
 
                 </tr>
 

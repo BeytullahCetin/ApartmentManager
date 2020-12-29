@@ -43,78 +43,33 @@
     if ($_SESSION['isAdmin'] == 1) {
 
         $nameErr = $pwdErr = $numberErr = $blockNoErr = $doorNoErr = $entryDateErr = $statusErr = "";
-        $name = $pwd = $number = $backupNum = $address = $blockNo = $doorNo = $entryDate = $exitDate = $status = "";
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $updateId = $_GET["updateId"];
 
+        $query = "SELECT * FROM users WHERE userID = $updateId";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
 
-            if (empty($_POST['name'])) {
-                $nameErr = "Name is Required";
-            } else {
-                $name = test_input($_POST['name']);
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
-                    $nameErr = "Only letters and white space allowed";
-                }
-            }
+        $name = $row['userName'];
+        $pwd = $row['userPwd'];
+        $number = $row['userNum'];
+        $backupNum = $row['backupNum'];
+        $address = $row['address'];
+        $blockNo = $row['blockNo'];
+        $doorNo = $row['doorNo'];
+        $entryDate = $row['entryDate'];
+        $exitDate = $row['exitDate'];
+        $status = $row['status'];
 
-            if (empty($_POST['pwd'])) {
-                $pwdErr = "Password is Required";
-            } else {
-                $pwd = test_input($_POST['pwd']);
-            }
-
-            if (empty($_POST['number'])) {
-                $numberErr = "Number is Required";
-            } else {
-                $number = test_input($_POST['number']);
-            }
-
-            $backupNum = test_input($_POST['backupNumber']);
-            $address = test_input($_POST['address']);
-
-
-            if (empty($_POST['blockNo'])) {
-                $blockNoErr = "Block Number is Required";
-            } else {
-                $blockNo = test_input($_POST['blockNo']);
-            }
-
-            if (empty($_POST['doorNo'])) {
-                $doorNoErr = "Door Number is Required";
-            } else {
-                $doorNo = test_input($_POST['doorNo']);
-            }
-
-            if (empty($_POST['entryDate'])) {
-                $entryDateErr = "Entry Date is Required";
-            } else {
-                $entryDate = test_input($_POST['entryDate']);
-            }
-
-            $exitDate = test_input($_POST['exitDate']);
-
-
-            if (empty($_POST['status'])) {
-                $statusErr = "Status is Required";
-            } else {
-                $status = test_input($_POST['status']);
-            }
-        }
     ?>
 
         <div class="center-container">
             <div class="login-form">
                 <h2 class="login-header">New Resident</h2>
 
-                <?php
-                if (isset($_GET['succesadd'])) {
-                    echo "Added Succesfully<br>";
-                }
-                ?>
-
                 <span style="color: red;">* fields are required</span>
 
-                <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                <form method="POST" action="updateresident.php? <?php echo "updateId=".$updateId; ?>">
 
                     <input type="text" name="name" id="name" placeholder="Name" value="<?php echo "$name"; ?>">
                     <span class="err">*<?php echo "$nameErr"; ?></span>
@@ -162,7 +117,7 @@
 
                     <span class="err">*<?php echo "$statusErr"; ?></span>
 
-                    <input class="button1" type="submit" value="Add">
+                    <input class="button1" type="submit" value="Update">
 
                 </form>
             </div>
@@ -170,22 +125,22 @@
 
     <?php
     }
-
+/* 
     if (empty($nameErr) && empty($pwdErr) && empty($numberErr) && empty($blockNoErr) && empty($doorNoErr) && empty($entryDateErr) && empty($statusErr)) {
 
         if (!empty($name) && !empty($pwd) && !empty($number) && !empty($blockNo) && !empty($doorNo) && !empty($entryDate) && !empty($status)) {
 
-            $pwd = md5($pwd);
-            $query = "INSERT INTO `users` (`userID`, `userName`, `userPwd`, `userNum`, `backupNum`, `address`, `blockNo`, `doorNo`, `entryDate`, `exitDate`, `status`, `isAdmin`) 
-            VALUES (NULL, '$name', '$pwd', '$number', '$backupNum', '$address', '$blockNo', '$doorNo', '$entryDate', '$exitDate', '$status', '0')";
+            $query = "UPDATE users SET userName = '$name', userPwd = '$pwd', userNum = '$number', backupNum = '$backupNum', 
+            address = '$address', blockNo = '$blockNo', doorNo = '$doorNo', entryDate = $entryDate, exitDate = $exitDate, status = '$status'
+            WHERE userID = $updateId ";
 
             if (mysqli_query($conn, $query)) {
-                header("Location: adduser.php?succesadd");
+                header("Location: apartments.php?succesfullyupdated=1");
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
         }
-    }
+    } */
     ?>
 
 </body>
