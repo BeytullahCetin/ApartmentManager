@@ -49,6 +49,10 @@
         if (mysqli_num_rows($result) == 1) {
             $row=mysqli_fetch_array($result);
 
+
+            //Here I think I can use "$user = $_SESSION[$row]". But I started without it.
+            //Then I decided not to change anything. Because it may consume some time.
+            
             $_SESSION['userID']=$row['userID'];
             $_SESSION['userName']=$row['userName'];
             $_SESSION['userPwd']=$row['userPwd'];
@@ -60,10 +64,8 @@
             $_SESSION['entryDate']=$row['entryDate'];
             $_SESSION['exitDate']=$row['exitDate'];
             $_SESSION['status']=$row['status'];
-            $_SESSION['isAdmin']=$row['isAdmin'];
+            $_SESSION['authorization']=$row['isAdmin'];
             $_SESSION['isLoggedIn']=true;
-            
-            
             
             header("Location: welcome.php");
 

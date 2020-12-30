@@ -40,7 +40,7 @@
     }
 
 
-    if ($_SESSION['isAdmin'] == 1) {
+    if ($_SESSION['authorization'] == 1) {
 
         $nameErr = $pwdErr = $numberErr = $blockNoErr = $doorNoErr = $entryDateErr = $statusErr = "";
 
@@ -69,7 +69,7 @@
 
                 <span style="color: red;">* fields are required</span>
 
-                <form method="POST" action="updateresident.php? <?php echo "updateId=".$updateId; ?>">
+                <form method="POST" action="updateresident.php? <?php echo "updateId=" . $updateId; ?>">
 
                     <input type="text" name="name" id="name" placeholder="Name" value="<?php echo "$name"; ?>">
                     <span class="err">*<?php echo "$nameErr"; ?></span>
@@ -92,14 +92,28 @@
                     <label for="doorNo">Door No</label>
                     <select name="doorNo" id="doorNo">
                         <?php
+
+                        $query = "SELECT doorNo FROM users ORDER BY doorNo ASC";
+                        $result = mysqli_query($conn, $query);
+                        $doorNos = array();
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            array_push($doorNos, $row['doorNo']);
+                        }
+
+                        echo "<option value='$doorNo'>$doorNo</option>";
+
                         for ($i = 1; $i <= 12; $i++) {
-                            echo "<option value='$i'>$i</option>";
+                            if (in_array($i, $doorNos)) {
+                            } else {
+                                echo "<option value='$i'>$i</option>";
+                            }
                         }
                         ?>
                     </select>
                     <br>
                     <label for="entryDate">Entry Date</label>
-                    <input type="date" name="entryDate" id="entryDate" placeholder="Entry Date">
+                    <input type="date" name="entryDate" id="entryDate" placeholder="Entry Date" value="<?php echo "$entryDate"; ?>">
                     <span class="err">*<?php echo "$entryDateErr"; ?></span>
                     <br>
                     <label for="exitDate">Exit Date</label>
@@ -112,9 +126,6 @@
                     <label for="tenant">Tenant</label>
                     <input type="radio" id="tenant" name="status" value="tenant" <?php if (isset($status) && $status == "tenant") echo "checked"; ?>>
 
-                    <label for="old">Old</label>
-                    <input type="radio" id="old" name="status" value="old" <?php if (isset($status) && $status == "old") echo "checked"; ?>>
-
                     <span class="err">*<?php echo "$statusErr"; ?></span>
 
                     <input class="button1" type="submit" value="Update">
@@ -125,7 +136,7 @@
 
     <?php
     }
-/* 
+    /* 
     if (empty($nameErr) && empty($pwdErr) && empty($numberErr) && empty($blockNoErr) && empty($doorNoErr) && empty($entryDateErr) && empty($statusErr)) {
 
         if (!empty($name) && !empty($pwd) && !empty($number) && !empty($blockNo) && !empty($doorNo) && !empty($entryDate) && !empty($status)) {

@@ -40,7 +40,7 @@
     }
 
 
-    if ($_SESSION['isAdmin'] == 1) {
+    if ($_SESSION['authorization'] == 1) {
         echo "admin kontrol";
         $nameErr = $pwdErr = $numberErr = $blockNoErr = $doorNoErr = $entryDateErr = $statusErr = "";
 
@@ -120,6 +120,9 @@
                 $statusErr = "Status is Required";
             } else {
                 $status = test_input($_POST['status']);
+                if(isset($exitDate)){
+                    $status = "old";
+                }
             }
         }
     }

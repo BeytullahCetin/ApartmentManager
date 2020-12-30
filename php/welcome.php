@@ -19,8 +19,10 @@
 
     <h1 class="login-header">Welcome <?php echo $_SESSION['userName']; ?></h1>
     
-    <?php if($_SESSION['isAdmin']==1){ ?>
+    <?php if($_SESSION['authorization']==1){ ?>
         <h1 class="login-header">Admin</h1>
+    <?php }else{ ?>
+        <h1 class="login-header">Resident</h1>
     <?php } ?>
 
 

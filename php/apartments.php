@@ -11,9 +11,9 @@
 
 <body>
     <?php include 'dbconn.php';
-    include 'navbar.php'; 
+    include 'navbar.php';
 
-    if(isset($_GET['succesfullyupdated']))
+    if (isset($_GET['succesfullyupdated']))
         echo "Succesfully Updated";
 
     $query = "SELECT * FROM users";
@@ -42,15 +42,15 @@
                 <th>Entry Date</th>
                 <th>Exit Date</th>
                 <th>Status</th>
-                
+
             </tr>
-            
+
             <?php
 
             while ($user = mysqli_fetch_assoc($result)) {
             ?>
                 <tr>
-                <td> <a class="buttona" href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button class="button1">Update</button></a></td>
+                    <td> <a class="buttona" href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button class="button1">Update</button></a></td>
                     <td> <a class="buttona" href="userdelete.php?id=<?php echo $user["userID"] ?>"><button class="button1">Delete</button></a></td>
                     <td> <?php echo $user["userID"]; ?> </td>
                     <td> <?php echo $user["userName"]; ?> </td>
@@ -59,12 +59,16 @@
                     <td> <?php echo $user["address"]; ?> </td>
                     <td> <?php echo $user["blockNo"]; ?> </td>
                     <td> <?php echo $user["doorNo"]; ?> </td>
-                    <td> <?php echo $user["entryDate"]; ?> </td>
-                    <td> <?php echo $user["exitDate"]; ?> </td>
-                    <td> <?php echo strtoupper($user["status"]);?> </td>
+                    <td> <?php $newDate = date('d-M-Y', strtotime($user['entryDate']));
+                            echo "$newDate"; ?> </td>
+                    <td> <?php if ($user['exitDate'] == NULL) {
+                            } else {
+                                $newDate = date('d-M-Y', strtotime($user['exitDate']));
+                                echo "$newDate";
+                            } ?> </td>
+                    <td> <?php echo strtoupper($user["status"]); ?> </td>
 
                 </tr>
-
             <?php } ?>
 
         </table>

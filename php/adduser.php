@@ -40,7 +40,7 @@
     }
 
 
-    if ($_SESSION['isAdmin'] == 1) {
+    if ($_SESSION['authorization'] == 1) {
 
         $nameErr = $pwdErr = $numberErr = $blockNoErr = $doorNoErr = $entryDateErr = $statusErr = "";
         $name = $pwd = $number = $backupNum = $address = $blockNo = $doorNo = $entryDate = $exitDate = $status = "";
@@ -136,11 +136,26 @@
                     <br>
                     <label for="doorNo">Door No</label>
                     <select name="doorNo" id="doorNo">
+                        
                         <?php
-                        for ($i = 1; $i <= 12; $i++) {
+
+                        $query = "SELECT doorNo FROM users ORDER BY doorNo ASC";
+                        $result = mysqli_query($conn, $query);
+                        $doorNos = array();
+
+                        while($row=mysqli_fetch_assoc($result)){
+                            array_push($doorNos, $row['doorNo']);
+                        }
+
+                        for ($i = 1; $i<=12; $i++) {
+                            if(in_array($i, $doorNos)){
+
+                            }else{
                             echo "<option value='$i'>$i</option>";
+                            }
                         }
                         ?>
+
                     </select>
                     <br>
                     <label for="entryDate">Entry Date</label>
@@ -156,9 +171,6 @@
 
                     <label for="tenant">Tenant</label>
                     <input type="radio" id="tenant" name="status" value="tenant" <?php if (isset($status) && $status == "tenant") echo "checked"; ?>>
-
-                    <label for="old">Old</label>
-                    <input type="radio" id="old" name="status" value="old" <?php if (isset($status) && $status == "old") echo "checked"; ?>>
 
                     <span class="err">*<?php echo "$statusErr"; ?></span>
 
