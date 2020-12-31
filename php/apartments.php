@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="http://localhost:80/css/styles.css?v=<?php echo time(); ?>">
+    <?php include "css.php"; ?>
 
 </head>
 
@@ -21,26 +21,30 @@
 
     ?>
 
-    <div class="user-table">
-        <table class="flow">
-            <tr>
-                <th></th>
-                <th></th>
-                <th>
-                    Name-Surname
-                </th>
-                <th>
-                    Number
-                </th>
-                <th>Backup Number</th>
-                <th>Address</th>
-                <th>Block No</th>
-                <th>Door No</th>
-                <th>Entry Date</th>
-                <th>Exit Date</th>
-                <th>Status</th>
 
-            </tr>
+    <div class="container my-3">
+        <table class="table table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+
+                    <th class="text-center" colspan="2">Action</th>
+
+                    <th>
+                        Name-Surname
+                    </th>
+                    <th>
+                        Number
+                    </th>
+                    <th>Backup Number</th>
+                    <th>Address</th>
+                    <th>Block No</th>
+                    <th>Door No</th>
+                    <th>Entry Date</th>
+                    <th>Exit Date</th>
+                    <th>Status</th>
+
+                </tr>
+            </thead>
 
             <?php
 
@@ -48,8 +52,14 @@
             ?>
                 <tr>
                     <?php if ($_SESSION['authorization'] == 1) { ?>
-                        <td> <a class="buttona" href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button class="button1">Update</button></a></td>
-                        <td> <a class="buttona" href="userdelete.php?id=<?php echo $user["userID"] ?>"><button class="button1">Delete</button></a></td>
+
+                        <div class="btn-group">
+
+                            <td> <a href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button type="button" class="btn btn-outline-primary">Update</button></a></td>
+                            <td> <a href="userdelete.php?id=<?php echo $user["userID"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+
+                        </div>
+
                     <?php } else {
                     ?>
                         <td></td>

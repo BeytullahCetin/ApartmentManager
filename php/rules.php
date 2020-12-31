@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apartment Manager</title>
-    <link rel="stylesheet" href="http://localhost:80/css/styles.css?v=<?php echo time(); ?>">
+    <?php include "css.php";?>
 
 </head>
 
@@ -16,20 +16,36 @@
     include 'navbar.php';
     ?>
 
-    <div class="flow">
-        <h1>
-            Apartment Rules
-        </h1>
-        <br>
-        <ol style="margin-left: auto; margin-right: auto;">
-            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, asperiores.</li>
-            <li>Nulla repellat architecto, asperiores sint animi voluptate expedita ex distinctio.</li>
-            <li>Officiis nemo at, quibusdam maiores ex quia deserunt eos tenetur!</li>
-            <li>Officiis accusamus perspiciatis expedita nam adipisci at similique dolorum molestiae.</li>
-            <li>Repellendus dicta, voluptatem aspernatur pariatur sapiente error culpa itaque quidem?</li>
-        </ol>
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-2"></div>
+
+    <div class="col-lg-8">
+
+        <div class="text-center my-3">
+            
+            <h1>Apartment Rules</h1>
+            <br>
+            <p>1 - Lorem ipsum dolor sit amet.</p>
+            <p>2 - Lorem ipsum dolor sit amet.</p>
+            <p>3 - Lorem ipsum dolor sit amet.</p>
+            <p>4 - Lorem ipsum dolor sit amet.</p>
+            <p>5 - Lorem ipsum dolor sit amet.</p>
+            <p>6 - Lorem ipsum dolor sit amet.</p>
+            <p>7 - Lorem ipsum dolor sit amet.</p>
+
+        </div>
 
     </div>
+
+    <div class="col-lg-2"></div>
+
+
+</div>
+
+</div>
 
 </body>
 
