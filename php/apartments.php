@@ -16,7 +16,7 @@
     if (isset($_GET['succesfullyupdated']))
         echo "Succesfully Updated";
 
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM users ORDER BY doorNo";
     $result = mysqli_query($conn, $query);
 
     ?>
@@ -26,9 +26,6 @@
             <tr>
                 <th></th>
                 <th></th>
-                <th>
-                    No
-                </th>
                 <th>
                     Name-Surname
                 </th>
@@ -50,9 +47,15 @@
             while ($user = mysqli_fetch_assoc($result)) {
             ?>
                 <tr>
-                    <td> <a class="buttona" href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button class="button1">Update</button></a></td>
-                    <td> <a class="buttona" href="userdelete.php?id=<?php echo $user["userID"] ?>"><button class="button1">Delete</button></a></td>
-                    <td> <?php echo $user["userID"]; ?> </td>
+                    <?php if ($_SESSION['authorization'] == 1) { ?>
+                        <td> <a class="buttona" href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button class="button1">Update</button></a></td>
+                        <td> <a class="buttona" href="userdelete.php?id=<?php echo $user["userID"] ?>"><button class="button1">Delete</button></a></td>
+                    <?php } else {
+                    ?>
+                        <td></td>
+                        <td></td>
+                    <?php
+                    } ?>
                     <td> <?php echo $user["userName"]; ?> </td>
                     <td> <?php echo $user["userNum"]; ?> </td>
                     <td> <?php echo $user["backupNum"]; ?> </td>
