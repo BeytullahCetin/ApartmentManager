@@ -105,6 +105,8 @@
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
                     <div class="container">
+                        
+                        <h2 class="text-center">Add Resident</h2>
 
                         <span class="err">* fields are required</span>
 
@@ -224,7 +226,7 @@
                             </div>
 
                             <div class="row justify-content-center">
-                                <input class="btn btn-primary" type="submit" value="Add">
+                                <input class="btn btn-primary btn-block" type="submit" value="Add">
                             </div>
 
                         </form>

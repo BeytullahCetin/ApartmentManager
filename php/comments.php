@@ -27,10 +27,12 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <div class="container">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover">
                         <tr>
 
-                            <th colspan="2">
+                        <th class="text-center">Action</th>
+
+                            <th class="text-center">
                                 Comments
                             </th>
 
@@ -42,7 +44,7 @@
                         while ($comment = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
-                                <td> <a href="commentdelete.php?id=<?php echo $comment["commentID"]?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                <td class="text-center"> <a href="commentdelete.php?id=<?php echo $comment["commentID"]?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
                                 <td> <?php echo $comment["commentText"]; ?> </td>
 
 

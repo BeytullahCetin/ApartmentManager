@@ -10,7 +10,7 @@
 
 </header>
 
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
     <div class="container-fluid">
 
@@ -24,7 +24,7 @@
         <?php if (isset($_SESSION["authorization"])) { ?>
 
             <ul class="nav navbar-nav justify-content-center">
-                <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/apartments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/apartments.php">Apartments</a></li>
+                <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/apartments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/apartments.php">Residents</a></li>
                 <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/dues.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/dues.php">Dues</a></li>
             </ul>
 
@@ -33,7 +33,7 @@
 
                 <ul class="nav navbar-nav justify-content-center">
 
-                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/adduser.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/adduser.php">Add User</a></li>
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/adduser.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/adduser.php">Add Resident</a></li>
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/comments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/comments.php">Comments</a></li>
 
             <?php
