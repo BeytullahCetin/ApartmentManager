@@ -55,8 +55,8 @@
 
                         <div class="btn-group">
 
-                            <td> <a href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button type="button" class="btn btn-outline-primary">Update</button></a></td>
-                            <td> <a href="userdelete.php?id=<?php echo $user["userID"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+                            <td> <a href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button type="button" class="btn btn-primary">Update</button></a></td>
+                            <td> <a href="userdelete.php?id=<?php echo $user["userID"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
 
                         </div>
 

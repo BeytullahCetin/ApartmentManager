@@ -61,7 +61,7 @@
                                     Leave Comment:
                                 </label>
                                 <textarea name="comment" id="comment" cols="30" rows="8"></textarea>
-                                <input class="btn btn-outline-primary" type="submit" name="sumbitCommnet" id="sumbitCommnet" value="Send">
+                                <input class="btn btn-primary" type="submit" name="sumbitCommnet" id="sumbitCommnet" value="Send">
                             </form>
                             </div>
                             

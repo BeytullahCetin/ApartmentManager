@@ -42,7 +42,7 @@
                         while ($comment = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
-                                <td> <a href="commentdelete.php?id=<?php echo $comment["commentID"]?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+                                <td> <a href="commentdelete.php?id=<?php echo $comment["commentID"]?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
                                 <td> <?php echo $comment["commentText"]; ?> </td>
 
 
