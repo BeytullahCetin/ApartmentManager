@@ -10,11 +10,11 @@
 
 </header>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+<nav class="navbar navbar-default navbar-expand-sm bg-dark navbar-dark sticky-top">
 
     <div class="container-fluid">
 
-        <ul class="navbar-nav justify-content-left">
+        <ul class="nav navbar-nav justify-content-left">
 
             <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/index.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/index.php">Home</a></li>
             <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/rules.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/rules.php">Rules</a></li>
@@ -46,7 +46,7 @@
 
                     <li>
                         <?php if (!isset($_SESSION['isLoggedIn'])) { ?>
-                            <span class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/login.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/login.php"><b>Login</b></a></span>
+                            <span class="nav-item"><a class="<?php if ($_SERVER['REQUEST_URI'] == "/php/login.php") echo "active"; ?> nav-link" href="http://localhost:80/php/login.php"><b>Login</b></a></span>
                         <?php } else { ?>
                             <span class="nav-item"><a class="nav-link" href="logout.php"><b>Logout</b></a></span>
                         <?php } ?>

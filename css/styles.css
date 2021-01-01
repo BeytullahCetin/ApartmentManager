@@ -18,6 +18,11 @@ body{
   background-size: cover;
 }
 
+.active {
+  background:#777777; 
+  border-radius: 5%;
+}
+
 /* .center-container{
   display: flex;
   justify-content: center;
