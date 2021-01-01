@@ -51,8 +51,6 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            echo "method kontrol";
-
             if (empty($_POST['name'])) {
                 $nameErr = "Name is Required";
             } else {
@@ -101,9 +99,6 @@
                 $entryDate = test_input($_POST['entryDate']);
             }
 
-            $exitDate = test_input($_POST['exitDate']);
-
-
             if (empty($_POST['status'])) {
                 $statusErr = "Status is Required";
             } else {
@@ -115,14 +110,11 @@
         }
     }
 
-        echo "buradasın";
-
     if (empty($nameErr) && empty($pwdErr) && empty($numberErr) && empty($blockNoErr) && empty($doorNoErr)  && empty($statusErr)) {
-        echo "err kontrol";
+
         if (!empty($name) && !empty($pwd) && !empty($number) && !empty($blockNo) && !empty($doorNo) && !empty($status)) {
 
-            echo "query öncesi";
-            $query = "UPDATE users SET userName = \"$name\", userPwd = \"$pwd\", userNum = \"$number\", backupNum = \"$backupNum\", address = \"$address\", blockNo = \"$blockNo\", doorNo = \"$doorNo\", status = \"$status\", entryDate = \"$entryDate\", exitDate = \"$exitDate\" WHERE userID = $updateId ";
+            $query = "UPDATE users SET userName = \"$name\", userPwd = \"$pwd\", userNum = \"$number\", backupNum = \"$backupNum\", address = \"$address\", blockNo = \"$blockNo\", doorNo = \"$doorNo\", status = \"$status\", entryDate = \"$entryDate\", WHERE userID = $updateId ";
 
             if (mysqli_query($conn, $query)) {
                 header("Location: apartments.php?succesfullyupdated=1");

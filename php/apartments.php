@@ -18,73 +18,134 @@
 
     $query = "SELECT * FROM users ORDER BY doorNo";
     $result = mysqli_query($conn, $query);
-
     ?>
 
-
     <div class="container my-3">
-        <table class="table table-hover table-striped">
-            <thead class="thead-light">
-                <tr>
+        <div class="container row">
 
-                    <th class="text-center" colspan="2">Action</th>
+            <div class="accordion">
 
-                    <th>
-                        Name-Surname
-                    </th>
-                    <th>
-                        Number
-                    </th>
-                    <th>Backup Number</th>
-                    <th>Address</th>
-                    <th>Block No</th>
-                    <th>Door No</th>
-                    <th>Entry Date</th>
-                    <th>Exit Date</th>
-                    <th>Status</th>
+                <div class="card">
+                    <div class="card-header">
+                        <a id="card-link" data-toggle="collapse" href="#residents">
+                            Residents
+                        </a>
+                    </div>
 
-                </tr>
-            </thead>
+                    <div class="collapse show" id="residents">
+                        <div class="card-body">
 
-            <?php
+                            <table class="table table-hover table-striped">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <?php if ($_SESSION['authorization'] == 1) { ?>
+                                            <th class="text-center" colspan="2">Action</th>
+                                        <?php } ?>
+                                        <th>Name-Surname</th>
+                                        <th>Number</th>
+                                        <th>Backup Number</th>
+                                        <th>Address</th>
+                                        <th>Block No</th>
+                                        <th>Door No</th>
+                                        <th>Entry Date</th>
+                                        <th>Exit Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
 
-            while ($user = mysqli_fetch_assoc($result)) {
-            ?>
-                <tr>
-                    <?php if ($_SESSION['authorization'] == 1) { ?>
+                                <?php
+                                while ($user = mysqli_fetch_assoc($result)) { ?>
+                                    <tr>
+                                        <?php if ($_SESSION['authorization'] == 1) { ?>
+                                            <div class="btn-group">
+                                                <td> <a href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button type="button" class="btn btn-primary">Update</button></a></td>
+                                                <td> <a href="userdelete.php?id=<?php echo $user["userID"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                            </div>
+                                        <?php } ?>
+                                        <td> <?php echo $user["userName"]; ?> </td>
+                                        <td> <?php echo $user["userNum"]; ?> </td>
+                                        <td> <?php echo $user["backupNum"]; ?> </td>
+                                        <td> <?php echo $user["address"]; ?> </td>
+                                        <td> <?php echo $user["blockNo"]; ?> </td>
+                                        <td> <?php echo $user["doorNo"]; ?> </td>
+                                        <td> <?php $newDate = date('d-M-Y', strtotime($user['entryDate']));
+                                                echo "$newDate"; ?> </td>
+                                        <td> <?php if ($user['exitDate'] == NULL) {
+                                                } else {
+                                                    $newDate = date('d-M-Y', strtotime($user['exitDate']));
+                                                    echo "$newDate";
+                                                } ?> </td>
+                                        <td> <?php echo strtoupper($user["status"]); ?> </td>
 
-                        <div class="btn-group">
+                                    </tr>
+                                <?php } ?>
 
-                            <td> <a href="updateresidentform.php?updateId=<?php echo $user["userID"] ?>"><button type="button" class="btn btn-primary">Update</button></a></td>
-                            <td> <a href="userdelete.php?id=<?php echo $user["userID"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                            </table>
+
 
                         </div>
+                    </div>
+                </div>
 
-                    <?php } else {
-                    ?>
-                        <td></td>
-                        <td></td>
-                    <?php
-                    } ?>
-                    <td> <?php echo $user["userName"]; ?> </td>
-                    <td> <?php echo $user["userNum"]; ?> </td>
-                    <td> <?php echo $user["backupNum"]; ?> </td>
-                    <td> <?php echo $user["address"]; ?> </td>
-                    <td> <?php echo $user["blockNo"]; ?> </td>
-                    <td> <?php echo $user["doorNo"]; ?> </td>
-                    <td> <?php $newDate = date('d-M-Y', strtotime($user['entryDate']));
-                            echo "$newDate"; ?> </td>
-                    <td> <?php if ($user['exitDate'] == NULL) {
-                            } else {
-                                $newDate = date('d-M-Y', strtotime($user['exitDate']));
-                                echo "$newDate";
-                            } ?> </td>
-                    <td> <?php echo strtoupper($user["status"]); ?> </td>
+                <div class="card">
+                    <div class="card-header">
+                        <a id="card-link" data-toggle="collapse" href="#oldresidents">
+                            Old Residents
+                        </a>
+                    </div>
 
-                </tr>
-            <?php } ?>
+                    <div class="collapse" id="oldresidents">
+                        <div class="card-body">
+                            <table class="table table-hover table-striped">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <?php if ($_SESSION['authorization'] == 1) { ?>
+                                            <th class="text-center">Action</th>
+                                        <?php } ?>
+                                        <th>Name-Surname</th>
+                                        <th>Number</th>
+                                        <th>Backup Number</th>
+                                        <th>Block No</th>
+                                        <th>Door No</th>
+                                        <th>Entry Date</th>
+                                        <th>Exit Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
 
-        </table>
+                                <?php
+                                
+                                $query = "SELECT * FROM oldresident ORDER BY exitDate";
+                                $result = mysqli_query($conn, $query);
+
+                                while ($user = mysqli_fetch_assoc($result)) { ?>
+                                    <tr>
+                                        <?php if ($_SESSION['authorization'] == 1) { ?>
+                                        <td> <a href="userdelete.php?id=<?php echo $user["userID"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                        <?php } ?>
+                                        <td> <?php echo $user['name']; ?> </td>
+                                        <td> <?php echo $user['num']; ?> </td>
+                                        <td> <?php echo $user["backupNum"]; ?> </td>
+                                        <td> <?php echo $user["blockNo"]; ?> </td>
+                                        <td> <?php echo $user["doorNo"]; ?> </td>
+                                        <td> <?php $newDate = date('d-M-Y', strtotime($user['entryDate']));
+                                                echo "$newDate"; ?> </td>
+                                        <td> <?php $newDate = date('d-M-Y', strtotime($user['exitDate']));
+                                                echo "$newDate"; ?></td>
+                                        <td> <?php echo strtoupper($user["status"]); ?> </td>
+                                    </tr>
+
+                                <?php } ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
     </div>
 
 </body>
