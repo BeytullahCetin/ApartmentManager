@@ -21,7 +21,16 @@
     ?>
 
     <div class="container my-3">
-        <div class="container row">
+        <div class="container col-md-12">
+
+            <?php if (isset($_GET['errordelete'])) {
+            ?>
+
+                <p class="err">User delete error! User has unpaid dues.</p>
+
+            <?php
+            }
+            ?>
 
             <div class="accordion">
 
@@ -80,60 +89,62 @@
                         </div>
                     </div>
                 </div>
+                
+                <?php if (isset($_SESSION['authorization']) && $_SESSION['authorization'] == 1) { ?>
+                    <div class="card">
+                        <div class="card-header">
+                            <a id="card-link" data-toggle="collapse" href="#oldresidents">
+                                Old Residents
+                            </a>
+                        </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <a id="card-link" data-toggle="collapse" href="#oldresidents">
-                            Old Residents
-                        </a>
-                    </div>
+                        <div class="collapse" id="oldresidents">
+                            <div class="card-body">
+                                <table class="table table-hover table-striped">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <?php if ($_SESSION['authorization'] == 1) { ?>
+                                                <th class="text-center">Action</th>
+                                            <?php } ?>
+                                            <th>Name-Surname</th>
+                                            <th>Number</th>
+                                            <th>Backup Number</th>
+                                            <th>Block No</th>
+                                            <th>Door No</th>
+                                            <th>Entry Date</th>
+                                            <th>Exit Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
 
-                    <div class="collapse" id="oldresidents">
-                        <div class="card-body">
-                            <table class="table table-hover table-striped">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <?php if ($_SESSION['authorization'] == 1) { ?>
-                                            <th class="text-center">Action</th>
-                                        <?php } ?>
-                                        <th>Name-Surname</th>
-                                        <th>Number</th>
-                                        <th>Backup Number</th>
-                                        <th>Block No</th>
-                                        <th>Door No</th>
-                                        <th>Entry Date</th>
-                                        <th>Exit Date</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
+                                    <?php
 
-                                <?php
-                                
-                                $query = "SELECT * FROM oldresident ORDER BY exitDate";
-                                $result = mysqli_query($conn, $query);
+                                    $query = "SELECT * FROM oldresident ORDER BY exitDate";
+                                    $result = mysqli_query($conn, $query);
 
-                                while ($user = mysqli_fetch_assoc($result)) { ?>
-                                    <tr>
-                                        <?php if ($_SESSION['authorization'] == 1) { ?>
-                                        <td> <a href="deleteoldresident.php?id=<?php echo $user["id"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
-                                        <?php } ?>
-                                        <td> <?php echo $user['name']; ?> </td>
-                                        <td> <?php echo $user['num']; ?> </td>
-                                        <td> <?php echo $user["backupNum"]; ?> </td>
-                                        <td> <?php echo $user["blockNo"]; ?> </td>
-                                        <td> <?php echo $user["doorNo"]; ?> </td>
-                                        <td> <?php $newDate = date('d-M-Y', strtotime($user['entryDate']));
-                                                echo "$newDate"; ?> </td>
-                                        <td> <?php $newDate = date('d-M-Y', strtotime($user['exitDate']));
-                                                echo "$newDate"; ?></td>
-                                        <td> <?php echo strtoupper($user["status"]); ?> </td>
-                                    </tr>
+                                    while ($user = mysqli_fetch_assoc($result)) { ?>
+                                        <tr>
+                                            <?php if ($_SESSION['authorization'] == 1) { ?>
+                                                <td> <a href="deleteoldresident.php?id=<?php echo $user["id"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                            <?php } ?>
+                                            <td> <?php echo $user['name']; ?> </td>
+                                            <td> <?php echo $user['num']; ?> </td>
+                                            <td> <?php echo $user["backupNum"]; ?> </td>
+                                            <td> <?php echo $user["blockNo"]; ?> </td>
+                                            <td> <?php echo $user["doorNo"]; ?> </td>
+                                            <td> <?php $newDate = date('d-M-Y', strtotime($user['entryDate']));
+                                                    echo "$newDate"; ?> </td>
+                                            <td> <?php $newDate = date('d-M-Y', strtotime($user['exitDate']));
+                                                    echo "$newDate"; ?></td>
+                                            <td> <?php echo strtoupper($user["status"]); ?> </td>
+                                        </tr>
 
-                                <?php } ?>
-                            </table>
+                                    <?php } ?>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
 
 
             </div>

@@ -8,6 +8,7 @@ $query = "SELECT * FROM users WHERE userID = $userId";
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
 
+        $id = $row['userID'];
         $name = $row['userName'];
         $number = $row['userNum'];
         $backupNum = $row['backupNum'];
@@ -17,7 +18,7 @@ $query = "SELECT * FROM users WHERE userID = $userId";
         $exitDate = date("Y-m-d");
         $status = $row['status'];
 
-$query= "INSERT INTO `oldresident` VALUES ('NULL', '$name', '$number', '$backupNum', '$blockNo', '$doorNo', '$entryDate', '$exitDate', '$status')";
+$query= "INSERT INTO `oldresident` VALUES ('$id', '$name', '$number', '$backupNum', '$blockNo', '$doorNo', '$entryDate', '$exitDate', '$status')";
 
 if(mysqli_query($conn, $query)){
     header("Location: apartments.php");

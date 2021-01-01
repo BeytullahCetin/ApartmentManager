@@ -101,7 +101,7 @@
 
 
         <div class="container my-3">
-            <div class="row">
+            <div class="row border">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
                     <div class="container">
@@ -219,14 +219,14 @@
                                     <input type="radio" id="owner" name="status" value="owner" <?php if (isset($status) && $status == "owner") echo "checked"; ?>>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4 mb-0">
                                     <label for="tenant">Tenant</label>
                                     <input type="radio" id="tenant" name="status" value="tenant" <?php if (isset($status) && $status == "tenant") echo "checked"; ?>>
                                 </div>
                             </div>
 
                             <div class="row justify-content-center">
-                                <input class="btn btn-primary btn-block" type="submit" value="Add">
+                                <input class="btn btn-primary btn-block mt-0 mb-2" type="submit" value="Add">
                             </div>
 
                         </form>

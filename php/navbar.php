@@ -25,17 +25,31 @@
 
             <ul class="nav navbar-nav justify-content-center">
                 <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/apartments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/apartments.php">Residents</a></li>
-                <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/dues.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/dues.php">Dues</a></li>
+
+                <?php if ($_SESSION['authorization'] == 1) { ?>
+                    <li class="nav-item dropdown <?php if ($_SERVER['REQUEST_URI'] == "/php/showdues.php" || $_SERVER['REQUEST_URI'] == "/php/senddues.php") echo "active"; ?>">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Dues
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/php/showdues.php">Show Dues</a>
+                            <a class="dropdown-item" href="/php/sendduesform.php">Send Dues</a>
+                        </div>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/showdues.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/showdues.php">Dues</a></li>
+                <?php } ?>
             </ul>
 
 
             <?php if ($_SESSION['authorization'] == 1) { ?>
 
                 <ul class="nav navbar-nav justify-content-center">
-
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/adduser.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/adduser.php">Add Resident</a></li>
-                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/comments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/comments.php">Comments</a></li>
 
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expand.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expand.php">Income Expand</a></li>
+
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/comments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/comments.php">Comments</a></li>
             <?php
             }
         } ?>
