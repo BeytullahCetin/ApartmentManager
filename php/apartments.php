@@ -103,9 +103,7 @@
                                 <table class="table table-hover table-striped">
                                     <thead class="thead-light">
                                         <tr>
-                                            <?php if ($_SESSION['authorization'] == 1) { ?>
-                                                <th class="text-center">Action</th>
-                                            <?php } ?>
+
                                             <th>Name-Surname</th>
                                             <th>Number</th>
                                             <th>Backup Number</th>
@@ -124,9 +122,7 @@
 
                                     while ($user = mysqli_fetch_assoc($result)) { ?>
                                         <tr>
-                                            <?php if ($_SESSION['authorization'] == 1) { ?>
-                                                <td> <a href="deleteoldresident.php?id=<?php echo $user["id"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
-                                            <?php } ?>
+                                            
                                             <td> <?php echo $user['name']; ?> </td>
                                             <td> <?php echo $user['num']; ?> </td>
                                             <td> <?php echo $user["backupNum"]; ?> </td>

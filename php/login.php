@@ -80,7 +80,7 @@
             $_SESSION['authorization'] = $row['isAdmin'];
             $_SESSION['isLoggedIn'] = true;
 
-            header("Location: apartments.php");
+            header("Location: showdues.php");
         } else
             echo "<p style='color: red; text-align: center';><b>Wrong number or password</b></p>";
     }

@@ -30,6 +30,13 @@
                 </div>
 
                 <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="expenseDetail">Expense Detail: </label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" name="expenseDetail" id="expenseDetail" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label class="col-md-2 col-form-label" for="expenseDate">Expense Date: </label>
                     <div class="col-md-10">
                         <input class="form-control" type="date" id="expenseDate" name="expenseDate" required>

@@ -73,6 +73,18 @@
                         </div>
 
                         <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="commentDate">
+                                    Comment Date:
+                                </label>
+                            </div>
+
+                            <div class="col-md-6 text-center">
+                                <input class="form-control" type="date" name="commentDate" id="commentDate">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
                             <div class="col-md-12">
                                 <input class="btn btn-primary btn-block" type="submit" name="sumbitCommnet" id="sumbitCommnet" value="Send">
                             </div>

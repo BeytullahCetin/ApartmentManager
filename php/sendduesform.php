@@ -30,9 +30,13 @@
 
                 <div class="form-group row">
                     <label class="col-md-2 col-form-label" for="duePrice">Due Price: </label>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <input class="form-control" type="text" id="duePrice" name="duePrice" required>
                     </div>
+                    <div class="col-md-2">
+                        <p class="text-left">TL</p>
+                    </div>
+
                 </div>
 
                 <div class="row">

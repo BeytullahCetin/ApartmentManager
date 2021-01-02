@@ -15,33 +15,50 @@
   include "dbconn.php";
   include "navbar.php";
 
+  if (isset($_GET['startingDate'])) {
+    $startingDate = $_GET['startingDate'];
+  } else {
+    $startingDate = date("Y-m-d", mktime(0, 0, 0, date("m") - 1, 1));
+
+  }
+
+  if (isset($_GET['endingDate'])) {
+    $endingDate = $_GET['endingDate'];
+  } else {
+    $endingDate = date("Y-m-d", mktime(0, 0, 0, date("m"), 1));
+  }
 
 
-
-  ?>
-
-  <div class="container">
-    <div class="row my-3 justify-content-center">
-      <div class="" id='piechart'></div>
-    </div>
-  </div>
-
-<?php
-
-  $query = "SELECT SUM(duePrice) FROM due WHERE paymentStatus = 'paid'";
+  $query = "SELECT SUM(duePrice) FROM due WHERE paymentStatus = 'paid' AND period BETWEEN '$startingDate' AND '$endingDate'";
   $result = mysqli_query($conn, $query);
   $row = mysqli_fetch_assoc($result);
-  $income = $row['SUM(duePrice)'];
+  if($row['SUM(duePrice)'] > 0){
+    $income = $row['SUM(duePrice)'];
+  }else{
+    $income=0;
+  }
+  
 
-  $query = "SELECT SUM(duePrice) FROM due WHERE paymentStatus = 'not paid'";
+  $query = "SELECT SUM(duePrice) FROM due WHERE paymentStatus = 'not paid' AND period BETWEEN '$startingDate' AND '$endingDate'";
   $result = mysqli_query($conn, $query);
   $row = mysqli_fetch_assoc($result);
-  $unpaiddues = $row['SUM(duePrice)'];
+  if($row['SUM(duePrice)'] > 0){
+    $unpaiddues = $row['SUM(duePrice)'];
+  }else{
+    $unpaiddues=0;
+  }
+  
 
-  $query = "SELECT SUM(expensePrice) FROM expense";
+
+  $query = "SELECT SUM(expensePrice) FROM expense WHERE expenseDate BETWEEN '$startingDate' AND '$endingDate'";
   $result = mysqli_query($conn, $query);
   $row = mysqli_fetch_assoc($result);
-  $expense = $row['SUM(expensePrice)'];
+  if($row['SUM(expensePrice)'] > 0){
+    $expense = $row['SUM(expensePrice)'];
+  }else{
+    $expense=0;
+  }
+  
 
   echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
     
@@ -54,9 +71,9 @@
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
       ['Task', 'Hours per Day'],
-      ['Income'," . $income . "],
+      ['Due Incomes'," . $income . "],
       ['Expense'," . $expense . "],
-      ['Not Paid Dues'," . $expense . "]
+      ['Unpaid Dues'," . $unpaiddues . "]
 
     ]);
     
@@ -70,6 +87,126 @@
     </script>";
 
   ?>
-  
+
+  <div class="container">
+    <div class="row justify-content-center">
+
+        <div id='piechart'></div>
+
+    </div>
+
+    <div class="row justify-content-center">
+      <form class="form-inline py-5" method="GET" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+
+        <div class="form-group mx-5">
+          <label for="startingDate">Starting Date: </label>
+          <input class="form-control mx-2" type="date" name="startingDate" id="startingDate" value="<?php echo $startingDate; ?>">
+        </div>
+
+        <div class="form-group mx-5">
+          <label for="endingDate">Ending Date: </label>
+          <input class="form-control mx-2" type="date" name="endingDate" id="endingDate" value="<?php echo $endingDate ?>">
+        </div>
+
+        <div class="form-group mx-5">
+          <input class="btn btn-primary" type="submit" value=Show>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="accordion">
+
+          <div class="card">
+            <div class="card-header">
+              <a id="card-link" data-toggle="collapse" href="#expenseReport">
+                Selected Expense Report
+              </a>
+            </div>
+
+            <div class="collapse show" id="expenseReport">
+              <div class="card-body">
+
+                <table class="table table-hover table-striped">
+                  <thead class="thead-light">
+                    <tr>
+
+                      <th>Expense Type</th>
+                      <th>Expense Date</th>
+                      <th>Expense Price</th>
+
+                  </thead>
+
+                  <?php
+
+                  $query = "SELECT * FROM expense WHERE expenseDate BETWEEN '$startingDate' AND '$endingDate'";
+                  $result = mysqli_query($conn, $query);
+                  while ($expense = mysqli_fetch_assoc($result)) { ?>
+                    <tr>
+
+                      <td> <?php echo $expense["expenseType"]; ?> </td>
+                      <td> <?php echo $expense["expenseDate"]; ?> </td>
+                      <td> <?php echo $expense["expensePrice"]; ?> </td>
+
+                    </tr>
+
+                  <?php } ?>
+
+                </table>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <a id="card-link" data-toggle="collapse" href="#lifetime">
+                Lifetime Expense Report
+              </a>
+            </div>
+
+            <div class="collapse" id="lifetime">
+              <div class="card-body">
+
+                <table class="table table-hover table-striped">
+                  <thead class="thead-light">
+                    <tr>
+
+                      <th>Expense Type</th>
+                      <th>Expense Date</th>
+                      <th>Expense Price</th>
+
+                  </thead>
+
+                  <?php
+
+                  $query = "SELECT * FROM expense ORDER BY 'expenseDate'";
+                  $result = mysqli_query($conn, $query);
+                  while ($expense = mysqli_fetch_assoc($result)) { ?>
+                    <tr>
+
+                      <td> <?php echo $expense["expenseType"]; ?> </td>
+                      <td> <?php echo $expense["expenseDate"]; ?> </td>
+                      <td> <?php echo $expense["expensePrice"]; ?> </td>
+
+                    </tr>
+
+                  <?php } ?>
+
+                </table>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

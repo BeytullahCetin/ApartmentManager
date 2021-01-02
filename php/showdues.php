@@ -76,7 +76,8 @@
                                             <td> <?php echo $row["userName"]; ?> </td>
                                             <td> <?php echo $row["blockNo"]; ?> </td>
                                             <td> <?php echo $row["doorNo"]; ?> </td>
-                                            <td> <?php echo $row["period"]; ?> </td>
+                                            <td> <?php $newDate = date('d-M-Y', strtotime($row["period"]));
+                                                    echo "$newDate";?> </td>
                                             <td> <?php echo $row["duePrice"]; ?> </td>
 
                                         </tr>
@@ -108,9 +109,7 @@
                                 <table class="table table-hover table-striped">
                                     <thead class="thead-light">
                                         <tr>
-                                            <?php if ($_SESSION['authorization'] == 1) { ?>
-                                                <th class="text-center">Action</th>
-                                            <?php } ?>
+
                                             <th>Status</th>
                                             <th>Name-Surname</th>
                                             <th>Block No</th>
@@ -124,25 +123,13 @@
                                     <?php
                                     while ($row = mysqli_fetch_assoc($result)) { ?>
                                         <tr>
-                                            <?php if ($_SESSION['authorization'] == 1) {
-
-                                                if ($row['paymentStatus'] == "not paid") { ?>
-
-                                                    <td><a href="paydue.php?id=<?php echo $row['userID']; ?>&period=<?php echo $row['period'] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-success">Pay</button></a></td>
-
-                                            <?php
-                                                } else {
-
-                                                    echo "<td></td>";
-                                                }
-                                            }
-                                            ?>
 
                                             <td> <?php echo strtoupper($row["paymentStatus"]); ?> </td>
                                             <td> <?php echo $row["userName"]; ?> </td>
                                             <td> <?php echo $row["blockNo"]; ?> </td>
                                             <td> <?php echo $row["doorNo"]; ?> </td>
-                                            <td> <?php echo $row["period"]; ?> </td>
+                                            <td> <?php $newDate = date('d-M-Y', strtotime($row["period"]));
+                                                    echo "$newDate";?> </td>
                                             <td> <?php echo $row["duePrice"]; ?> </td>
 
                                         </tr>
@@ -158,7 +145,7 @@
                     <div class="card">
 
                         <?php
-                        $query = "SELECT * FROM oldresident o, due d WHERE o.id=d.userID AND d.paymentStatus = 'not paid' ORDER BY period";
+                        $query = "SELECT * FROM oldresident o, due d WHERE o.id=d.userID ORDER BY period";
                         $result = mysqli_query($conn, $query);
                         ?>
 
@@ -174,11 +161,10 @@
                                 <table class="table table-hover table-striped">
                                     <thead class="thead-light">
                                         <tr>
-                                            <?php if ($_SESSION['authorization'] == 1) { ?>
-                                                <th class="text-center">Action</th>
-                                            <?php } ?>
+                                            
                                             <th>Status</th>
                                             <th>Name-Surname</th>
+                                            <th>Number</th>
                                             <th>Block No</th>
                                             <th>Door No</th>
                                             <th>Period</th>
@@ -190,25 +176,14 @@
                                     <?php
                                     while ($row = mysqli_fetch_assoc($result)) { ?>
                                         <tr>
-                                            <?php if ($_SESSION['authorization'] == 1) {
-
-                                                if ($row['paymentStatus'] == "not paid") { ?>
-
-                                                    <td><a href="paydue.php?id=<?php echo $row['userID']; ?>&period=<?php echo $row['period'] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-success">Pay</button></a></td>
-
-                                            <?php
-                                                } else {
-
-                                                    echo "<td></td>";
-                                                }
-                                            }
-                                            ?>
-
+                                            
                                             <td> <?php echo strtoupper($row["paymentStatus"]); ?> </td>
                                             <td> <?php echo $row["name"]; ?> </td>
+                                            <td> <?php echo $row["num"] ?></td>
                                             <td> <?php echo $row["blockNo"]; ?> </td>
                                             <td> <?php echo $row["doorNo"]; ?> </td>
-                                            <td> <?php echo $row["period"]; ?> </td>
+                                            <td> <?php $newDate = date('d-M-Y', strtotime($row["period"]));
+                                                    echo "$newDate";?> </td>
                                             <td> <?php echo $row["duePrice"]; ?> </td>
 
                                         </tr>
@@ -285,7 +260,8 @@
                                             <td> <?php echo $row["userName"]; ?> </td>
                                             <td> <?php echo $row["blockNo"]; ?> </td>
                                             <td> <?php echo $row["doorNo"]; ?> </td>
-                                            <td> <?php echo $row["period"]; ?> </td>
+                                            <td> <?php $newDate = date('d-M-Y', strtotime($row["period"]));
+                                                    echo "$newDate";?> </td>
                                             <td> <?php echo $row["duePrice"]; ?> </td>
 
                                         </tr>
@@ -351,7 +327,8 @@
                                             <td> <?php echo $row["userName"]; ?> </td>
                                             <td> <?php echo $row["blockNo"]; ?> </td>
                                             <td> <?php echo $row["doorNo"]; ?> </td>
-                                            <td> <?php echo $row["period"]; ?> </td>
+                                            <td> <?php $newDate = date('d-M-Y', strtotime($row["period"]));
+                                                    echo "$newDate";?> </td>
                                             <td> <?php echo $row["duePrice"]; ?> </td>
 
                                         </tr>
