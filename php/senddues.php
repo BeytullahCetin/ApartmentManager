@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 include "dbconn.php";
 
 $duePeriod = $_POST['duePeriod'];
@@ -23,8 +24,6 @@ for($x=0; $x < count($userList); $x++){
       }
 
 }
-
 header("Location: showdues.php");
-
 
 ?>

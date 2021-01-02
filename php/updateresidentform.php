@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add User</title>
-    <?php include "css.php";?>
+    <?php include "css.php"; ?>
 </head>
 
 <body>
@@ -41,8 +41,42 @@
 
 
     if ($_SESSION['authorization'] == 1) {
+        
+        if(isset($_GET['nameErr'])){
+            $nameErr=$_GET['nameErr'];
+        }else{
+            $nameErr="";
+        }
 
-        $nameErr = $pwdErr = $numberErr = $blockNoErr = $doorNoErr = $entryDateErr = $statusErr = "";
+        if(isset($_GET['pwdErr'])){
+            $pwdErr=$_GET['pwdErr'];
+        }else{
+            $pwdErr="";
+        }
+
+        if(isset($_GET['numberErr'])){
+            $numberErr=$_GET['numberErr'];
+        }else{
+            $numberErr="";
+        }
+
+        if(isset($_GET['blockNoErr'])){
+            $blockNoErr=$_GET['blockNoErr'];
+        }else{
+            $blockNoErr="";
+        }
+
+        if(isset($_GET['doorNoErr'])){
+            $doorNoErr=$_GET['doorNoErr'];
+        }else{
+            $doorNoErr="";
+        }
+
+        if(isset($_GET['statusErr'])){
+            $statusErr=$_GET['statusErr'];
+        }else{
+            $statusErr="";
+        }
 
         $updateId = $_GET["updateId"];
 
@@ -63,95 +97,136 @@
 
     ?>
 
-        <div class="center-container">
-            <div class="login-form">
-                <h2 class="login-header">New Resident</h2>
+        <div class="container my-3">
+            <div class="row border">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="container">
 
-                <span style="color: red;">* fields are required</span>
+                        <h2 class="text-center">Add Resident</h2>
 
-                <form method="POST" action="updateresident.php? <?php echo "updateId=" . $updateId; ?>">
+                        <span class="err">* fields are required</span>
 
-                    <input type="text" name="name" id="name" placeholder="Name" value="<?php echo "$name"; ?>">
-                    <span class="err">*<?php echo "$nameErr"; ?></span>
-                    <br>
-                    <input type="password" name="pwd" id="pwd" maxlength="11" placeholder="Password" value="<?php echo "$pwd"; ?>">
-                    <span class="err">*<?php echo "$pwdErr"; ?></span>
-                    <br>
-                    <input type="tel" name="number" id="number" pattern="[0-9]{10}" maxlength="10" placeholder="Number eg:(555-123-4567)" value="<?php echo "$number"; ?>">
-                    <span class="err">*<?php echo "$numberErr"; ?></span>
-                    <br>
-                    <input type="tel" name="backupNumber" id="backupNumber" pattern="[0-9]{10}" maxlength="10" placeholder="Backup Number" value="<?php echo "$backupNum"; ?>">
-                    <br>
-                    <input type="text" name="address" id="address" placeholder="Address" value="<?php echo "$address"; ?>">
-                    <br>
-                    <label for="blockNo">Block No</label>
-                    <select name="blockNo" id="blockNo">
-                        <option value="A" selected>A</option>
-                    </select>
-                    <br>
-                    <label for="doorNo">Door No</label>
-                    <select name="doorNo" id="doorNo">
-                        <?php
+                        <form method="POST" action="<?php echo "updateresident.php?updateId=$updateId"; ?>">
 
-                        $query = "SELECT doorNo FROM users ORDER BY doorNo ASC";
-                        $result = mysqli_query($conn, $query);
-                        $doorNos = array();
+                            <div class="form-group row">
+                                <!-- Name -->
+                                <label class="col-md-4 col-form-label" for="name">Name:<span class="err"> *<?php echo "$nameErr"; ?></span></label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" name="name" id="name" placeholder="Name" value="<?php echo "$name"; ?>">
+                                </div>
+                            </div>
 
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            array_push($doorNos, $row['doorNo']);
-                        }
 
-                        echo "<option value='$doorNo'>$doorNo</option>";
+                            <div class="form-group row">
+                                <!-- Password -->
+                                <label class="col-md-4" for="pwd">Password:<span class="err"> *<?php echo "$pwdErr"; ?></span></label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="password" name="pwd" id="pwd" maxlength="11" placeholder="Password" value="<?php echo "$pwd"; ?>">
+                                </div>
+                            </div>
 
-                        for ($i = 1; $i <= 12; $i++) {
-                            if (in_array($i, $doorNos)) {
-                            } else {
-                                echo "<option value='$i'>$i</option>";
-                            }
-                        }
-                        ?>
-                    </select>
-                    <br>
-                    <label for="entryDate">Entry Date</label>
-                    <input type="date" name="entryDate" id="entryDate" placeholder="Entry Date" value="<?php echo "$entryDate"; ?>">
-                    <span class="err">*<?php echo "$entryDateErr"; ?></span>
-                    <br>
-                    <label for="exitDate">Exit Date</label>
-                    <input type="date" name="exitDate" id="exitDate" placeholder="Exit Date">
-                    <br>
 
-                    <label for="owner">Owner</label>
-                    <input type="radio" id="owner" name="status" value="owner" <?php if (isset($status) && $status == "owner") echo "checked"; ?>>
+                            <div class="form-group row">
+                                <!-- Number - Backup Number-->
 
-                    <label for="tenant">Tenant</label>
-                    <input type="radio" id="tenant" name="status" value="tenant" <?php if (isset($status) && $status == "tenant") echo "checked"; ?>>
+                                <label class="col-md-4" for="number">Number:<span class="err"> *<?php echo "$numberErr"; ?></span></label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="tel" name="number" id="number" pattern="[0-9]{10}" maxlength="10" placeholder="eg:(555-123-4567)" value="<?php echo "$number"; ?>">
+                                </div>
+                            </div>
 
-                    <span class="err">*<?php echo "$statusErr"; ?></span>
+                            <div class="form-group row">
+                                <label class="col-md-4" for="backupNumber">Backup Number:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="tel" name="backupNumber" id="backupNumber" pattern="[0-9]{10}" maxlength="10" placeholder="Backup Number" value="<?php echo "$backupNum"; ?>">
+                                </div>
+                            </div>
 
-                    <input class="button1" type="submit" value="Update">
+                            <div class="form-group row">
+                                <!-- Address -->
 
-                </form>
+                                <label class="col-md-4" for="address">Address:</label>
+                                <div class="form-group col-md-8">
+                                    <input class="form-control" type="text" name="address" id="address" placeholder="Address" value="<?php echo "$address"; ?>">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <!-- Block No - Door No -->
+
+                                <label class="col-md-4" for="blockNo">Block No:</label>
+                                <div class="form-group col-md-2">
+                                    <select class="form-control" name="blockNo" id="blockNo">
+                                        <option value="A" selected>A</option>
+                                    </select>
+                                </div>
+
+                                <label class="col-md-4" for="doorNo">Door No:</label>
+                                <div class="form-group col-md-2">
+                                    <select class="form-control" name="doorNo" id="doorNo">
+
+                                        <option value="<?php echo $doorNo ?>"><?php echo $doorNo ?></option>
+                                        <?php
+
+                                        $query = "SELECT doorNo FROM users ORDER BY doorNo ASC";
+                                        $result = mysqli_query($conn, $query);
+                                        $doorNos = array();
+
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            array_push($doorNos, $row['doorNo']);
+                                        }
+
+                                        for ($i = 1; $i <= 12; $i++) {
+                                            if (in_array($i, $doorNos)) {
+                                            } else {
+                                                echo "<option value='$i'>$i</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <!-- Dates -->
+
+                                <label class="col-md-4" for="entryDate">Entry Date: </label>
+                                <div class="form-group col-md-8">
+                                    <input class="form-control" type="date" name="entryDate" id="entryDate" placeholder="Entry Date" value="<?php echo "$entryDate" ?>">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <!-- Status -->
+
+                                <label class="col-md-4" for="status">Status:<span class="err">*<?php echo "$statusErr"; ?></span></label>
+
+                                <div class="form-group col-md-4">
+                                    <label for="owner">Owner</label>
+                                    <input type="radio" id="owner" name="status" value="owner" <?php if (isset($status) && $status == "owner") echo "checked"; ?>>
+                                </div>
+
+                                <div class="form-group col-md-4 mb-0">
+                                    <label for="tenant">Tenant</label>
+                                    <input type="radio" id="tenant" name="status" value="tenant" <?php if (isset($status) && $status == "tenant") echo "checked"; ?>>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center">
+                                <input class="btn btn-primary btn-block mt-0 mb-2" type="submit" value="Add">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
             </div>
         </div>
-
     <?php
     }
-    /* 
-    if (empty($nameErr) && empty($pwdErr) && empty($numberErr) && empty($blockNoErr) && empty($doorNoErr) && empty($entryDateErr) && empty($statusErr)) {
-
-        if (!empty($name) && !empty($pwd) && !empty($number) && !empty($blockNo) && !empty($doorNo) && !empty($entryDate) && !empty($status)) {
-
-            $query = "UPDATE users SET userName = '$name', userPwd = '$pwd', userNum = '$number', backupNum = '$backupNum', 
-            address = '$address', blockNo = '$blockNo', doorNo = '$doorNo', entryDate = $entryDate, exitDate = $exitDate, status = '$status'
-            WHERE userID = $updateId ";
-
-            if (mysqli_query($conn, $query)) {
-                header("Location: apartments.php?succesfullyupdated=1");
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
-        }
-    } */
     ?>
 
 </body>

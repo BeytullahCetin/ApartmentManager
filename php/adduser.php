@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add User</title>
+    <title>Add Resident</title>
     <?php include "css.php"; ?>
 </head>
 
@@ -105,7 +105,7 @@
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
                     <div class="container">
-                        
+
                         <h2 class="text-center">Add Resident</h2>
 
                         <span class="err">* fields are required</span>
@@ -171,8 +171,6 @@
                                     </select>
                                 </div>
 
-                                
-
                                 <label class="col-md-4" for="doorNo">Door No:</label>
                                 <div class="form-group col-md-2">
                                     <select class="form-control" name="doorNo" id="doorNo">
@@ -234,7 +232,8 @@
                 </div>
                 <div class="col-lg-2"></div>
             </div>
-        <?php
+        </div>
+    <?php
     }
 
     if (empty($nameErr) && empty($pwdErr) && empty($numberErr) && empty($blockNoErr) && empty($doorNoErr) && empty($entryDateErr) && empty($statusErr)) {
@@ -252,7 +251,7 @@
             }
         }
     }
-        ?>
+    ?>
 
 </body>
 

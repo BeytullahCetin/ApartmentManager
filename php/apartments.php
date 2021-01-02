@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Residents</title>
     <?php include "css.php"; ?>
 
 </head>
@@ -14,13 +14,13 @@
     include 'navbar.php';
 
     if (isset($_GET['succesfullyupdated']))
-        echo "Succesfully Updated";
+        echo "<p class='text-center mt-2'>Succesfully Updated</p>";
 
     $query = "SELECT * FROM users ORDER BY doorNo";
     $result = mysqli_query($conn, $query);
     ?>
 
-    <div class="container my-3">
+    <div class="container mt-2">
         <div class="container col-md-12">
 
             <?php if (isset($_GET['errordelete'])) {

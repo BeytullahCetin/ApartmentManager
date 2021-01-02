@@ -36,9 +36,11 @@
                             <a class="dropdown-item" href="/php/sendduesform.php">Send Dues</a>
                         </div>
                     </li>
+
                 <?php } else { ?>
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/showdues.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/showdues.php">Dues</a></li>
                 <?php } ?>
+                <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expense.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expense.php">Summary</a></li>
             </ul>
 
 
@@ -47,7 +49,7 @@
                 <ul class="nav navbar-nav justify-content-center">
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/adduser.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/adduser.php">Add Resident</a></li>
 
-                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expense.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expense.php">Income Expense</a></li>
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/expenseform.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/expenseform.php">Expense</a></li>
 
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/comments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/comments.php">Comments</a></li>
             <?php
