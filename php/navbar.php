@@ -3,7 +3,7 @@
 <header>
     <div class="container-fluid my-2 text-center">
         <a href="http://localhost:80/index.php">
-            <img src="../images/apartment-manager-logo.png" alt="logo">
+            <img src="../images/apartment-manager-2.png" alt="logo">
         </a>
     </div>
 
@@ -47,7 +47,7 @@
                 <ul class="nav navbar-nav justify-content-center">
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/adduser.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/adduser.php">Add Resident</a></li>
 
-                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expand.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expand.php">Income Expand</a></li>
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expense.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expense.php">Income Expense</a></li>
 
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/comments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/comments.php">Comments</a></li>
             <?php
