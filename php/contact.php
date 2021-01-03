@@ -25,8 +25,11 @@
             <div class="col-lg-8">
 
                 <?php
-                if (isset($_GET['commentsucces'])) {
+                if (isset($_GET['commentSucces'])) {
                     echo "<p class='success'>Comment Succesfully</p>";
+                }
+                if (isset($_GET['commentError'])) {
+                    echo "<p class='errCenter'>Comment Error!</p>";
                 }
                 ?>
 
@@ -73,18 +76,6 @@
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-md-6">
-                                <label for="commentDate">
-                                    Comment Date:
-                                </label>
-                            </div>
-
-                            <div class="col-md-6 text-center">
-                                <input class="form-control" type="date" name="commentDate" id="commentDate">
-                            </div>
-                        </div>
-
-                        <div class="row form-group">
                             <div class="col-md-12">
                                 <input class="btn btn-primary btn-block" type="submit" name="sumbitCommnet" id="sumbitCommnet" value="Send">
                             </div>
@@ -106,10 +97,26 @@
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                    $comment = test_input($_POST['comment']);
-                    $query = "INSERT INTO `comment` (`commentID`, `commentText`) VALUES (NULL, '$comment')";
-                    $result = mysqli_query($conn, $query);
-                    header("Location: contact.php?commentsucces");
+                    if (isset($_POST['comment'])) {
+                        $comment = test_input($_POST['comment']);
+                    }
+
+                    if (isset($_POST['comment'])) {
+                        $date = date("Y-m-d");
+                    }
+
+                    if (!empty($comment)) {
+
+                        $query = "INSERT INTO comment (commentText, commentDate) VALUES ('$comment', '$date')";
+
+                        if (mysqli_query($conn, $query)) {
+                            header("Location: contact.php?commentSucces");
+                        } else {
+                            
+                        }
+                    }else{
+                        header("Location: contact.php?commentError");
+                    }
                 }
 
                 ?>

@@ -27,7 +27,7 @@
                     
                 <div class="text-center">
                     <h1 class="p-4">Welcome to Our Apartment</h1>
-                    <img src="../images/2.jpg" alt="img">
+                    <img src="../images/1.jpg" alt="img">
                 </div>
 
                 <div class="my-3">

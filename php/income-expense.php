@@ -78,7 +78,7 @@
     ]);
     
       // Optional; add a title and set the width and height of the chart
-      var options = {'title':'Income Expense', 'width':600, 'height':400};
+      var options = {'title':'Income Expense', 'width':600, 'height':350};
     
       // Display the chart inside the <div> element with id='piechart'
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -96,7 +96,7 @@
     </div>
 
     <div class="row justify-content-center">
-      <form class="form-inline py-5" method="GET" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+      <form class="form-inline py-3" method="GET" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
         <div class="form-group mx-5">
           <label for="startingDate">Starting Date: </label>
@@ -115,10 +115,9 @@
       </form>
 
     </div>
-
     <div class="row">
       <div class="col-md-12">
-        <div class="accordion">
+        <div class="accordion mb-5">
 
           <div class="card">
             <div class="card-header">
@@ -135,6 +134,7 @@
                     <tr>
 
                       <th>Expense Type</th>
+                      <th>Expense Detail</th>
                       <th>Expense Date</th>
                       <th>Expense Price</th>
 
@@ -148,6 +148,7 @@
                     <tr>
 
                       <td> <?php echo $expense["expenseType"]; ?> </td>
+                      <td> <?php echo $expense["expenseDetail"]; ?> </td>
                       <td> <?php echo $expense["expenseDate"]; ?> </td>
                       <td> <?php echo $expense["expensePrice"]; ?> </td>
 
@@ -176,6 +177,7 @@
                     <tr>
 
                       <th>Expense Type</th>
+                      <th>Expense Detail</th>
                       <th>Expense Date</th>
                       <th>Expense Price</th>
 
@@ -189,6 +191,7 @@
                     <tr>
 
                       <td> <?php echo $expense["expenseType"]; ?> </td>
+                      <td> <?php echo $expense["expenseDetail"]; ?></td>
                       <td> <?php echo $expense["expenseDate"]; ?> </td>
                       <td> <?php echo $expense["expensePrice"]; ?> </td>
 

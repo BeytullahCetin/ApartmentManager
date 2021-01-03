@@ -23,6 +23,26 @@ body{
   border-radius: 5%;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.success{
+color: green;
+text-align: center;
+}
+
+.err{
+  color: red;
+  font-size: .7rem;
+}
+
+.errCenter{
+  color: red;
+  text-align: center;
+}
+
 /* .center-container{
   display: flex;
   justify-content: center;
@@ -30,10 +50,6 @@ body{
   
 } */
 
-.err{
-  color: red;
-  font-size: .7rem;
-}
 
 
 /* a.logo{
@@ -139,19 +155,9 @@ input[type=radio]{
   color: white;
   background-color: var(--login-background);
   box-shadow: 2px 2px rgba(0,0, 0, .4);
-} */
+}  
 
-img {
-    max-width: 100%;
-    height: auto;
-  }
-
-.success{
-  color: green;
-  text-align: center;
-}
-
-/* .flow{
+.flow{
   text-align: center;
   width: 80%;
   margin-left: auto;

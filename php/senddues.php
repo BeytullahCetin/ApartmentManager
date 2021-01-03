@@ -24,6 +24,7 @@ for($x=0; $x < count($userList); $x++){
       }
 
 }
+
 header("Location: showdues.php");
 
 ?>
