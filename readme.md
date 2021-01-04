@@ -29,7 +29,7 @@ Beytullah Çetin
     *Managers can see comment about any complains, requests or thanks.
 
 #Screens
-![visitor](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/tree/master/images/gifs/visitor.gif)
+![visitor](https://gph.is/g/EB1Jl6B)
 ![login](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/tree/master/images/gifs/login.gif)
 ![residentsPages](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/tree/master/images/gifs/residental.gif)
 ![residentals](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/tree/master/images/gifs/residentals.gif)
