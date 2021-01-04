@@ -1,18 +1,20 @@
-#Project-1_DesignApartmentManager
+# Project-1_DesignApartmentManager
 
 Beytullah Çetin
 20180808057
 
 *The requirements at the begining was:*
-    *Apartment presentation
-    *Apartment resident’s informations
-    *Income, expense, due control
-    *Contact with manager.
+    
+*Apartment presentation
+*Apartment resident’s informations
+*Income, expense, due control
+*Contact with manager.
 
 *The use cases at the begining was:*
-    *Users can track incomes and expenses.
-    *Users can see apartment residents and they can reach easily when needed.
-    *Users can give feedback to manager about apartment.
+
+*Users can track incomes and expenses.
+*Users can see apartment residents and they can reach easily when needed.
+*Users can give feedback to manager about apartment.
 
 **Now**
 
@@ -28,7 +30,7 @@ Beytullah Çetin
     *Managers can send dues to residentals and add expenses to apartment.
     *Managers can see comment about any complains, requests or thanks.
 
-#Screens
+# Screens
 
 ![visitor](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/visitor.gif)
 ![login](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/login.gif)
