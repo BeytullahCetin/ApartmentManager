@@ -15,9 +15,11 @@ I have done this project using with HTML, CSS, Bootstrap4 and PHP.
     
     *Residentals can see other residentals in any case about any situation.
     *Residentals can track their unpaid and paid dues.
-    *Residentals can see how much the apartment spent on what,when and how much. \Also they can see a detailed graphic about income and expenses.
+    *Residentals can see how much the apartment spent on what,when and how much. 
+    Also they can see a detailed graphic about income and expenses.
     
-    *Managers can track information about all the residents and old residents. \In any case to reach them. Also update residentals' profiles.
+    *Managers can track information about all the residents and old residents. 
+    In any case to reach them. Also update residentals' profiles.
     *Managers can track unpaid, paid and old residents' dues.
     *Managers can add new residents.
     *Managers can send dues to residentals and add expenses to apartment.
@@ -25,7 +27,7 @@ I have done this project using with HTML, CSS, Bootstrap4 and PHP.
 
 # Screens
 
-![visitor](https://media.giphy.com/media/y9YILvY9w4IXORtMff/giphy.gif)
+![visitor](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/visitor.gif)
 ![login](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/login.gif)
 ![residentsPages](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/residental.gif)
 ![residentals](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/residentals.gif)
