@@ -25,7 +25,7 @@ I have done this project using with HTML, CSS, Bootstrap4 and PHP.
 
 # Screens
 
-![visitor](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/visitor.gif)
+![visitor](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/visitorhighres.gif)
 ![login](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/login.gif)
 ![residentsPages](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/residental.gif)
 ![residentals](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/residentals.gif)
