@@ -27,13 +27,13 @@ I have done this project using with HTML, CSS, Bootstrap4 and PHP.
 
 # Screens
 
-![visitor](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/visitor.gif)
-![login](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/login.gif)
-![residentsPages](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/residental.gif)
-![residentals](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/residentals.gif)
-![dues](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/dues.gif)
-![addresident](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/addResident.gif)
-![senddues](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/senddues.gif)
-![expense](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/expense.gif)
-![comments](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/comments.gif)
-![logout](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/logout.gif)
+![visitor](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/visitor.gif)
+![login](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/login.gif)
+![residentsPages](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/resident.gif)
+![residentals](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/residentals.gif)
+![dues](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/dues.gif)
+![addresident](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/addResident.gif)
+![senddues](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/dues.gif)
+![expense](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/expense.gif)
+![comments](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/comments.gif)
+![logout](https://github.com/BeytullahCetin/Project-1_DesignApartmentManager/blob/master/images/gifs/highres/logout.gif)
