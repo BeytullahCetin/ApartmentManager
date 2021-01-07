@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Summary</title>
+  <title>Report</title>
   <?php include "css.php"; ?>
 </head>
 
@@ -25,7 +25,7 @@
   if (isset($_GET['endingDate'])) {
     $endingDate = $_GET['endingDate'];
   } else {
-    $endingDate = date("Y-m-d", mktime(0, 0, 0, date("m"), 1));
+    $endingDate = date("Y-m-d", mktime(0, 0, 0, date("m"), 0));
   }
 
 
