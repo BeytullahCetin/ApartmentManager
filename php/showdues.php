@@ -91,7 +91,7 @@
                 <div class="card">
 
                     <?php
-                    $query = "SELECT * FROM users u, due d WHERE u.userID=d.userID AND d.paymentStatus = 'paid' ORDER BY d.period, u.doorNo";
+                    $query = "SELECT * FROM users u, due d WHERE u.userID=d.userID AND d.paymentStatus = 'paid' ORDER BY d.period DESC, u.doorNo ASC";
                     $result = mysqli_query($conn, $query);
                     ?>
 
@@ -146,7 +146,7 @@
                 <div class="card">
 
                     <?php
-                    $query = "SELECT * FROM users u, due d WHERE u.userID=d.userID AND d.paymentStatus = 'paid' AND exitDate IS NOT NULL ORDER BY period";
+                    $query = "SELECT * FROM users u, due d WHERE u.userID=d.userID AND d.paymentStatus = 'paid' AND exitDate IS NOT NULL ORDER BY period DESC, doorNo ASC";
                     $result = mysqli_query($conn, $query);
                     ?>
 
