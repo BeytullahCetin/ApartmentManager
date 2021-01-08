@@ -47,8 +47,6 @@
             <?php
                 }
             } ?>
-
-
         </ul>
 
         <ul class="nav navbar-nav justify-content-right">
@@ -58,7 +56,7 @@
 
             <li>
                 <?php if (!isset($_SESSION['isLoggedIn'])) { ?>
-                    <span class="nav-item"><a href="http://localhost:80/php/login.php"><button class="btn btn-success">Login</button></a></span>
+                    <span class="nav-item"><a href="http://localhost:80/php/login.php"><button class="btn btn-success ml-5">Login</button></a></span>
                 <?php } else { ?>
                     <span class="nav-item"><a href="/php/logout.php"><button class="btn btn-danger ml-5"><?php echo $_SESSION['userName'] ?> | Logout</button></a></span>
                 <?php } ?>
