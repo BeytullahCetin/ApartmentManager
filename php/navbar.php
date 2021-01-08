@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 
 <header>
-    <div class="container-fluid my-2 text-center">
+    <div class="container-fluid my-1 text-center">
         <a href="http://localhost:80/index.php">
             <img src="../images/apartment-manager-2.png" alt="logo">
         </a>
@@ -10,31 +10,27 @@
 
 </header>
 
-<nav class="navbar navbar-default navbar-expand-sm bg-dark navbar-dark sticky-top">
+<nav class="navbar navbar-default navbar-expand-sm bg-dark navbar-dark sticky-top p-1">
 
     <div class="container-fluid">
 
         <ul class="nav navbar-nav justify-content-left">
 
             <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/index.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/index.php">Home</a></li>
-            <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/rules.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/rules.php">Rules</a></li>
-            <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/contact.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/contact.php">Contact</a></li>
-        </ul>
 
-        <?php if (isset($_SESSION["authorization"])) { ?>
-
-            <ul class="nav navbar-nav justify-content-center">
-                <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/apartments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/apartments.php">Residents</a></li>
-
-                <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/showdues.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/showdues.php">Dues</a></li>
-
-                <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expense.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expense.php">Summary</a></li>
-            </ul>
-
-
-            <?php if ($_SESSION['authorization'] == 1) { ?>
+            <?php if (isset($_SESSION["authorization"])) { ?>
 
                 <ul class="nav navbar-nav justify-content-center">
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/apartments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/apartments.php">Residents</a></li>
+
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/showdues.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/showdues.php">Dues</a></li>
+
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expense.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expense.php">Summary</a></li>
+                </ul>
+
+
+                <?php if ($_SESSION['authorization'] == 1) { ?>
+
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/adduser.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/adduser.php">Add Resident</a></li>
 
                     <li class="nav-item dropdown <?php if ($_SERVER['REQUEST_URI'] == "/php/senddues.php" || $_SERVER['REQUEST_URI'] == "/php/expenseform.php") echo "active"; ?>">
@@ -49,23 +45,27 @@
 
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/comments.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/comments.php">Comments</a></li>
             <?php
-            }
-        } ?>
-                </ul>
+                }
+            } ?>
 
 
-                <ul class="nav navbar-nav justify-content-right">
+        </ul>
 
-                    <li>
-                        <?php if (!isset($_SESSION['isLoggedIn'])) { ?>
-                            <span class="nav-item"><a class="<?php if ($_SERVER['REQUEST_URI'] == "/php/login.php") echo "active"; ?> nav-link" href="http://localhost:80/php/login.php"><b>Login</b></a></span>
-                        <?php } else { ?>
-                            <span class="nav-item"><a class="nav-link" href="/php/logout.php"><b>Logout</b></a></span>
-                        <?php } ?>
+        <ul class="nav navbar-nav justify-content-right">
 
-                    </li>
+            <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/rules.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/rules.php">Rules</a></li>
+            <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/contact.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/contact.php">Contact</a></li>
 
-                </ul>
+            <li>
+                <?php if (!isset($_SESSION['isLoggedIn'])) { ?>
+                    <span class="nav-item"><a href="http://localhost:80/php/login.php"><button class="btn btn-success">Login</button></a></span>
+                <?php } else { ?>
+                    <span class="nav-item"><a href="/php/logout.php"><button class="btn btn-danger ml-5"><?php echo $_SESSION['userName'] ?> | Logout</button></a></span>
+                <?php } ?>
+
+            </li>
+
+        </ul>
 
     </div>
 </nav>

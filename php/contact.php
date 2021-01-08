@@ -77,7 +77,7 @@
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <input class="btn btn-primary btn-block" type="submit" name="sumbitCommnet" id="sumbitCommnet" value="Send">
+                                <input class="btn btn-success btn-block" type="submit" name="sumbitCommnet" id="sumbitCommnet" value="Send">
                             </div>
 
 

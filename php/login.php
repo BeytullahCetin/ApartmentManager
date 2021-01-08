@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <input class="btn btn-primary btn-block ml-3" type="submit" value="Login">
+                    <input class="btn btn-success btn-block ml-3" type="submit" value="Login">
                 </div>
 
 
