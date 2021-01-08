@@ -100,21 +100,21 @@
     ?>
 
 
-        <div class="container my-3">
-            <div class="row border">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
+        <div class="container col-md-5 my-3">
                     <div class="container">
 
-                        <h2 class="text-center">Add Resident</h2>
+                        <h2 class="text-center my-2">Add Resident</h2>
+
+                        <?php
+                        if (isset($_GET['succesadd'])) {?>
+                        <p class="success">User Added Succesfully</p>
+                        <?php 
+                        }
+                        ?>
 
                         <span class="err">* fields are required</span>
 
-                        <?php
-                        if (isset($_GET['succesadd'])) {
-                            echo "Added Succesfully<br>";
-                        }
-                        ?>
+                        
 
                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
@@ -229,9 +229,6 @@
 
                         </form>
                     </div>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
         </div>
     <?php
     }

@@ -27,14 +27,13 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <div class="container">
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover text-center">
                         <tr>
 
-                        <th class="text-center">Action</th>
-
-                            <th class="text-center">
-                                Comments
-                            </th>
+                            <th>Action</th>
+                            <th>Comments</th>
+                            <th>Comment Date</th>
+                            <th>Number</th>
 
 
                         </tr>
@@ -44,10 +43,15 @@
                         while ($comment = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
-                                <td class="text-center"> <a href="commentdelete.php?id=<?php echo $comment["commentID"]?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                <td class="text-center"> <a href="commentdelete.php?id=<?php echo $comment["commentID"] ?>" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
                                 <td> <?php echo $comment["commentText"]; ?> </td>
-
-
+                                <td><?php $newDate = date('d-M-Y', strtotime($comment["commentDate"]));
+                                    echo "$newDate"; ?></td>
+                                <td><?php if (is_null($comment['number'])) {
+                                        echo "-";
+                                    } else {
+                                        echo $comment['number'];
+                                    } ?></td>
                             </tr>
 
                         <?php } ?>

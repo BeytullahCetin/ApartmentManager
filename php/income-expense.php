@@ -88,7 +88,7 @@
 
   ?>
 
-  <div class="container">
+  <div class="container col-md-10">
     <div class="row justify-content-center">
 
         <div id='piechart'></div>

@@ -17,8 +17,9 @@
 
     ?>
 
-    <div class="container">
-        <div class="row my-3 justify-content-center">
+    <div class="container col-md-4 my-3">
+
+    <h2 class="text-center mb-4">Expense</h2>
             
         <form class="form" method="POST" action="expense.php">
 
@@ -55,7 +56,6 @@
                 </div>
                 
             </form>
-        </div>
     </div>
 
 

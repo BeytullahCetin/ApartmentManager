@@ -75,6 +75,27 @@
                             </div>
                         </div>
 
+                        <?php
+
+                        if (!isset($_SESSION['userNum'])) { ?>
+
+                            <div class="row form-group">
+
+                                <div class="col-md-6">
+                                    <label for="comment">
+                                        Number:
+                                    </label>
+                                </div>
+
+                                <div class="col-md-6 text-center">
+                                    <input class="form-control" type="tel" name="number" id="number" pattern="[0-9]{10}" maxlength="10" required placeholder="eg:(555-123-4567)">
+                                </div>
+                            </div>
+
+                        <?php
+                        }
+                        ?>
+
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <input class="btn btn-success btn-block" type="submit" name="sumbitCommnet" id="sumbitCommnet" value="Send">
@@ -105,16 +126,23 @@
                         $date = date("Y-m-d");
                     }
 
+                    if (isset($_POST['number'])) {
+                        $number = test_input($_POST['number']);
+                    } else if (isset($_SESSION['userNum'])) {
+                        $number = $_SESSION['userNum'];
+                    } else {
+                        $number;
+                    }
+
                     if (!empty($comment)) {
 
-                        $query = "INSERT INTO comment (commentText, commentDate) VALUES ('$comment', '$date')";
+                        $query = "INSERT INTO comment (commentText, commentDate, number) VALUES ('$comment', '$date', '$number')";
 
                         if (mysqli_query($conn, $query)) {
                             header("Location: contact.php?commentSucces");
                         } else {
-                            
                         }
-                    }else{
+                    } else {
                         header("Location: contact.php?commentError");
                     }
                 }

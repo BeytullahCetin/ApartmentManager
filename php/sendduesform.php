@@ -17,8 +17,16 @@
 
     ?>
 
-    <div class="container">
-        <div class="row my-3 justify-content-center">
+    <div class="container col-md-4 my-3">
+
+    <h2 class="text-center mb-4">Send Due</h2>
+
+        <?php if (isset($_GET['duealreadyexist'])) { ?>
+            <p class="errCenter">Due Already Exist</p>
+        <?php
+        }
+        ?>
+
             <form class="form" method="POST" action="senddues.php">
 
                 <div class="form-group row">
@@ -43,7 +51,6 @@
                     <input class="btn btn-primary btn-block" type="submit" name="dueSubmit" id="dueSubmit" onclick="return confirm('Are you sure?')">
                 </div>
             </form>
-        </div>
     </div>
 
 
