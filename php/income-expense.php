@@ -185,7 +185,7 @@
 
                   <?php
 
-                  $query = "SELECT * FROM expense ORDER BY 'expenseDate'";
+                  $query = "SELECT * FROM expense ORDER BY expenseDate DESC";
                   $result = mysqli_query($conn, $query);
                   while ($expense = mysqli_fetch_assoc($result)) { ?>
                     <tr>

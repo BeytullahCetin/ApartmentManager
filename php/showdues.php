@@ -91,7 +91,7 @@
                 <div class="card">
 
                     <?php
-                    $query = "SELECT * FROM users u, due d WHERE u.userID=d.userID AND d.paymentStatus = 'paid' ORDER BY d.period DESC, u.doorNo ASC";
+                    $query = "SELECT * FROM users u, due d WHERE u.userID=d.userID AND d.paymentStatus = 'paid' AND u.exitDate IS NULL ORDER BY d.period DESC, u.doorNo ASC";
                     $result = mysqli_query($conn, $query);
                     ?>
 
