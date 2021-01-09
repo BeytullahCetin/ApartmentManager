@@ -25,7 +25,7 @@
 
                     <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/showdues.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/showdues.php">Dues</a></li>
 
-                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expense.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expense.php">Summary</a></li>
+                    <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/income-expense.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/income-expense.php">Report</a></li>
                 </ul>
 
 
@@ -54,14 +54,25 @@
             <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/rules.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/rules.php">Rules</a></li>
             <li class="nav-item <?php if ($_SERVER['REQUEST_URI'] == "/php/contact.php") echo "active"; ?>"><a class="nav-link" href="http://localhost:80/php/contact.php">Contact</a></li>
 
-            <li>
                 <?php if (!isset($_SESSION['isLoggedIn'])) { ?>
+
+                    <li>
                     <span class="nav-item"><a href="http://localhost:80/php/login.php"><button class="btn btn-success ml-5">Login</button></a></span>
+                    </li>
+
                 <?php } else { ?>
-                    <span class="nav-item"><a href="/php/logout.php"><button class="btn btn-danger ml-5"><?php echo $_SESSION['userName'] ?> | Logout</button></a></span>
+
+                    <li class="nav-item dropdown <?php if ($_SERVER['REQUEST_URI'] == "/php/profile.php") echo "active"; ?>">
+                        <a class="nav-link dropdown-toggle" href="#" id="logoutdrop" data-toggle="dropdown">
+                        <?php echo $_SESSION['userName']; ?>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/php/profile.php">Profile</a>
+                            <a class="dropdown-item" href="/php/logout.php"><b>Logout</b></a>
+                        </div>
+                    </li>
                 <?php } ?>
 
-            </li>
 
         </ul>
 
