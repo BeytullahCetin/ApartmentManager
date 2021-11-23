@@ -1,4 +1,4 @@
-# Project-1_DesignApartmentManager
+# ApartmentManager
 
 Beytullah Çetin\
 20180808057\
